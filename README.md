@@ -1,4 +1,7 @@
 # Mercedes
+SRS: https://docs.google.com/document/d/1b6tYHDSJ5r76CTC7EAI04Ck4aNCDXJnmWZM7duv9CbI/edit?usp=sharing
+
+SAD: https://docs.google.com/document/d/14pl2-W8JUYkqjQ79k8jf0hYuZtDuwrHjDrc_eaDQ1HE/edit?usp=sharing
 
 Charles Chan                27841523    chanc09@gmail.com
 
