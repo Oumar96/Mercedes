@@ -1,0 +1,27 @@
+{
+  "name": "mercedes",
+  "version": "1.0.0",
+  "description": "A medical reservation web application for SOEN 344",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oumar96/Mercedes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Oumar96/Mercedes/issues"
+  },
+  "homepage": "https://github.com/Oumar96/Mercedes#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
