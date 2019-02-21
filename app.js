@@ -26,7 +26,7 @@ app.use('/graphql', graphqlHttp({
       doctors: () => {
         return ['Doctor1', 'Doctor2', 'Doctor3'];
       },
-      createEvent: (args) => {
+      createDoctor: (args) => {
         const doctorName = args.name;
         return doctorName;
       }
