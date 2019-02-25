@@ -19,6 +19,14 @@ module.exports = buildSchema(`
     emailAddress: String!
     createdAppointments: [Appointment!]
   }
+  
+  type Nurse {
+    _id: ID!
+    accessID: String!
+    password: String
+    createdAppointments: [Appointment!]
+  }
+  
 
   input AppointmentInput {
     date: String!
