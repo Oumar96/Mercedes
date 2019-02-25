@@ -20,6 +20,16 @@ module.exports = buildSchema(`
     createdAppointments: [Appointment!]
   }
 
+type Doctor {
+    _id: ID!
+    permitNumber: Int!
+    lastName: String!
+    firstName: String!
+    speciality: String!
+    city: String!
+    createdAppointments: [Appointment!]
+  }
+
   input AppointmentInput {
     date: String!
     price: Float!
