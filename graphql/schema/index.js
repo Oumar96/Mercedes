@@ -20,6 +20,13 @@ module.exports = buildSchema(`
     createdAppointments: [Appointment!]
   }
 
+  type Nurse {
+    _id: ID!
+    accessID: String!
+    password: String
+    createdAppointments: [Appointment!]
+  }
+  
 type Doctor {
     _id: ID!
     permitNumber: Int!
