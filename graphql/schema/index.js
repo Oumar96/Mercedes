@@ -19,7 +19,7 @@ module.exports = buildSchema(`
     emailAddress: String!
     createdAppointments: [Appointment!]
   }
-  
+
   type Nurse {
     _id: ID!
     accessID: String!
@@ -27,7 +27,6 @@ module.exports = buildSchema(`
     createdAppointments: [Appointment!]
   }
   
-
 type Doctor {
     _id: ID!
     permitNumber: Int!
