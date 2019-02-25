@@ -1,72 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const graphqlHttp = require('express-graphql');
-const { buildSchema } = require('graphql');
 const mongoose = require('mongoose');
 
-const Appointment = require('./models/appointment')
+const graphQlSchema = require('./graphql/schema/index');
+const graphQlResolvers = require('./graphql/resolvers/index');
 
 const app = express();
 
 app.use(bodyParser.json());
 
 app.use('/graphql', graphqlHttp({
-  schema: buildSchema(`
-    type Appointment {
-      _id: ID!
-      date: String!
-      price: Float!
-    }
-
-    input AppointmentInput {
-      date: String!
-      price: Float!
-    }
-
-    type RootQuery {
-      appointments: [Appointment!]!
-    }
-
-    type RootMutation {
-      createAppointment(appointmentInput: AppointmentInput): Appointment
-    }
-
-    schema {
-      query: RootQuery
-      mutation: RootMutation
-    }
-    `),
-    rootValue: {
-      appointments: () => {
-        return Appointment.find()
-        .then(appointments => {
-          return appointments.map(appointment => {
-            // Converting _id to a string to show in graphiql
-            return { ...appointment._doc, _id: appointment.id }
-          });
-        })
-        .catch(err => {
-          throw err
-        });
-      },
-      createAppointment: args => {
-        const appointment = new Appointment({
-          date: new Date(args.appointmentInput.date),
-          price: +args.appointmentInput.price
-        });
-        // save() function provided by mongoose package
-        return appointment
-        .save()
-        .then(result => {
-          console.log(result);
-          return { ...result._doc, _id: appointment.id };
-        })
-        .catch(err => {
-          console.log(err);
-          throw err;
-        });
-      }
-    },
+  schema: graphQlSchema,
+    rootValue: graphQlResolvers,
     graphiql: true
   })
 );

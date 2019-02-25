@@ -10,7 +10,13 @@ const appointmentSchema = new Schema({
   price: {
     type: Number,
     required: true
+  },
+  creator: {
+    type: Schema.Types.ObjectId,
+    ref: 'Patient',
+    autopopulate: { select: ['emailAddress', 'physicalAddress'], maxDepth: 1 }
   }
 });
+appointmentSchema.plugin(require('mongoose-autopopulate'));
 
 module.exports = mongoose.model('Appointment', appointmentSchema);
