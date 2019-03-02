@@ -6,36 +6,27 @@ const patientSchema = new Schema({
   hcn: {
     type: String,
     required: true
-  } ,
-  password: {
-    type: String,
-    required: true
   },
   birthday: {
-    type: Number,
-    required: true
+    type: Number
   },
   gender: {
-    type: String,
-    required: true
+    type: String
   },
   phoneNumber: {
-    type: String,
-    required: true
+    type: String
   },
   physicalAddress: {
-    type: String,
-    required: true
+    type: String
   },
   emailAddress: {
-    type: String,
-    required: true
+    type: String
   },
   createdAppointments: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Appointment',
-      autopopulate: { maxDepth: 1 }
+      autopopulate: { maxDepth: 2 }
     }
   ]
 });
