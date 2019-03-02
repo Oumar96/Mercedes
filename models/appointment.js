@@ -3,19 +3,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const appointmentSchema = new Schema({
-  date: {
-    type: Date,
-    required: true
-  },
-  price: {
-    type: Number,
-    required: true
-  },
-  creator: {
+  type: String,
+  slots:  {
     type: Schema.Types.ObjectId,
-    ref: 'Patient',
-    autopopulate: { select: ['emailAddress', 'physicalAddress'], maxDepth: 1 }
-  }
+    ref: 'Slot',
+    autopopulate: { maxDepth: 1 }
+  },
+  created_at: Date
 });
 appointmentSchema.plugin(require('mongoose-autopopulate'));
 
