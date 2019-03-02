@@ -1,5 +1,4 @@
 const express = require('express');
-var path = require('path');
 const bodyParser = require('body-parser');
 const graphqlHttp = require('express-graphql');
 const mongoose = require('mongoose');
@@ -8,12 +7,7 @@ const graphQlSchema = require('./graphql/schema/index');
 const graphQlResolvers = require('./graphql/resolvers/index');
 const isAuth = require('./middleware/is-auth');
 
-var index = require('./routes/index');
-const api = require('./routes/api/index');
-
 const app = express();
-
-mongoose.Promise = global.Promise;
 
 app.use(bodyParser.json());
 
@@ -26,13 +20,6 @@ app.use((req, res, next) => {
   }
   next();
 });
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-app.use('/', index);
-app.use('/api', api);
-//app.use('/users', users);
 
 app.use(isAuth);
 

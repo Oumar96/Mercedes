@@ -1,68 +1,63 @@
 const { buildSchema } = require('graphql');
 
 module.exports = buildSchema(`
-  type Appointment {
+type Booking {
     _id: ID!
-    date: String!
-    price: Float!
-    creator: Patient!
-  }
+    event: Event!
+    user: User!
+    createdAt: String!
+    updatedAt: String!
+}
 
-  type Patient {
-    _id: ID!
-    hcn: String!
-    password: String
-    birthday: Int!
-    gender: String!
-    phoneNumber: String!
-    physicalAddress: String!
-    emailAddress: String!
-    createdAppointments: [Appointment!]
-  }
+type Event {
+  _id: ID!
+  title: String!
+  description: String!
+  price: Float!
+  date: String!
+  creator: User!
+}
 
-  type Nurse {
-    _id: ID!
-    accessID: String!
-    password: String
-    createdAppointments: [Appointment!]
-  }
-  
-type Doctor {
-    _id: ID!
-    permitNumber: Int!
-    lastName: String!
-    firstName: String!
-    speciality: String!
-    city: String!
-    createdAppointments: [Appointment!]
-  }
+type User {
+  _id: ID!
+  email: String!
+  password: String
+  createdEvents: [Event!]
+}
 
-  input AppointmentInput {
-    date: String!
-    price: Float!
-  }
+type AuthData {
+  userId: ID!
+  token: String!
+  tokenExpiration: Int!
+}
 
-  input PatientInput {
-    hcn: String!
-    password: String!
-    birthday: Int!
-    gender: String!
-    phoneNumber: String!
-    physicalAddress: String!
-    emailAddress: String!
-  }
+input EventInput {
+  title: String!
+  description: String!
+  price: Float!
+  date: String!
+}
 
-  type RootQuery {
-    appointments: [Appointment!]!
-  }
+input UserInput {
+  email: String!
+  password: String!
+}
 
-  type RootMutation {
-    createAppointment(appointmentInput: AppointmentInput): Appointment
-    createPatient(patientInput: PatientInput): Patient
-  }
+type RootQuery {
+    events: [Event!]!
+    bookings: [Booking!]!
+    login(email: String!, password: String!): AuthData!
+}
 
-  schema {
+type RootMutation {
+    createEvent(eventInput: EventInput): Event
+    createUser(userInput: UserInput): User
+    bookEvent(eventId: ID!): Booking!
+    cancelBooking(bookingId: ID!): Event!
+}
+
+schema {
     query: RootQuery
     mutation: RootMutation
-  }
-  `);
+}
+`);
