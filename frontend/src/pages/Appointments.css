@@ -1,8 +1,7 @@
-.events-control {
-  text-align: center;
-  border: 1px solid #1ca0be;
-  padding: 1rem;
-  margin: 2rem auto;
-  width: 30rem;
-  max-width: 80%;
+.depth {
+  margin: auto;
+  width: 15%;
+  padding: 25px;
+  border: 1px solid #18aec9;
+  border-radius: 30px;
 }
