@@ -1,6 +1,7 @@
 const Slot = require('../../models/slot');
 const Appointment = require('../../models/appointment');
 const Patient = require('../../models/patient');
+const Doctor = require('../../models/doctor');
 
 const appointmentController = {
   all: (req, res) => {
@@ -44,6 +45,42 @@ const appointmentController = {
       });
       patient.createdAppointments.push(newappointment._id);
       await patient.save();
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+  },
+  doctorCreate: async (req, res) => {
+    var requestBody = req.body;
+    const newslot = new Slot({
+      slot_time: requestBody.slot_time,
+      slot_date: requestBody.slot_date,
+      created_at: Date.now()
+    });
+    try {
+      const doctor = await Doctor.findOne({ 'permitNumber': requestBody.pm });
+      if (!doctor) {
+        throw new Error('Doctor not found.');
+      }
+      const slot = await Slot.find({ 'slot_time': requestBody.slot_time, 'slot_date': requestBody.slot_date });
+      if (slot.length > 4) {
+        throw new Error('Fully booked on date/time');
+      }
+      await newslot.save();
+      // Creates a new record from a submitted form
+      const newappointment = new Appointment({
+        type: requestBody.type,
+        slots: newslot._id
+      });
+      // and saves the record to the data base
+      await newappointment.save((err, saved) => {
+        // Returns the saved appointment after a successful save
+        result = Appointment.find({ _id: saved._id })
+        .populate("slots")
+        .exec((err, appointment) => res.json(appointment));
+      });
+      doctor.createdAppointments.push(newappointment._id);
+      await doctor.save();
     } catch (err) {
       console.log(err);
       throw err;
