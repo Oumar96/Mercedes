@@ -11,6 +11,7 @@ const appointmentList = props => {
         appointmentId={appointment._id}
         type={appointment.type}
         onDetail={props.onViewDetail}
+        onDelete={props.onCancel}
       />
     );
   });
