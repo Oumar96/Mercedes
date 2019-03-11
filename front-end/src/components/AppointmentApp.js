@@ -120,6 +120,12 @@ class AppointmentApp extends Component {
           at{" "}
           {this.getAppointmentTime()}
         </p>
+        <TextField
+          style={{ display: "block" }}
+          name="cc"
+          hintText="Credit Card Number"
+          floatingLabelText="Credit Card Number"
+        />
       </section>
     );
   }
@@ -282,12 +288,12 @@ class AppointmentApp extends Component {
     );
     const modalActions = [
       <FlatButton
-        label="Cancel"
+        label="Delete"
         primary={false}
         onClick={() => this.setState({ confirmationModalOpen: false })}
       />,
       <FlatButton
-        label="Confirm"
+        label="Buy"
         style={{ backgroundColor: "#00C853 !important" }}
         primary={true}
         onClick={() => this.handleSubmit()}
@@ -384,7 +390,7 @@ class AppointmentApp extends Component {
                         hintText="Health Care Number"
                         floatingLabelText="Health Care Number"
                         onChange={(evt, newValue) =>
-                          this.setState({ hcn: newValue })
+                          this.setState({ hcn: newValue.replace(/\s/g, '') })
                         }
                       />
                       <RaisedButton
@@ -416,7 +422,7 @@ class AppointmentApp extends Component {
             modal={true}
             open={confirmationModalOpen}
             actions={modalActions}
-            title="Confirm your appointment"
+            title="Cart"
           >
             {this.renderAppointmentConfirmation()}
           </Dialog>
