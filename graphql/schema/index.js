@@ -1,11 +1,18 @@
 const { buildSchema } = require('graphql');
 
 module.exports = buildSchema(`
+
   type Appointment {
     _id: ID!
-    date: String!
-    price: Float!
-    creator: Patient!
+    type: String!
+    slots: Slot
+  }
+
+  type Slot {
+    _id: ID!
+    slot_time: String!
+    slot_date: String!
+    created_at: String!
   }
 
   type Patient {
@@ -22,47 +29,79 @@ module.exports = buildSchema(`
 
   type Nurse {
     _id: ID!
-    accessID: String!
+    accessId: String!
     password: String
     createdAppointments: [Appointment!]
   }
-  
-type Doctor {
+
+  type Doctor {
     _id: ID!
     permitNumber: Int!
     lastName: String!
     firstName: String!
-    speciality: String!
+    specialty: String!
     city: String!
     createdAppointments: [Appointment!]
   }
 
-  input AppointmentInput {
-    date: String!
-    price: Float!
+  type User {
+    _id: ID!
+    email: String!
+    password: String
+  }
+
+  type AuthData {
+    userId: ID!
+    token: String!
+    tokenExpiration: Int!
+  }
+
+  input UserInput {
+    email: String!
+    password: String!
   }
 
   input PatientInput {
     hcn: String!
+    birthday: Int
+    gender: String
+    phoneNumber: String
+    physicalAddress: String
+    emailAddress: String
+  }
+
+  input NurseInput {
+    accessId: String!
     password: String!
-    birthday: Int!
-    gender: String!
-    phoneNumber: String!
-    physicalAddress: String!
-    emailAddress: String!
+  }
+
+  input DoctorInput {
+    permitNumber: Int!
+    lastName: String!
+    firstName: String!
+    specialty: String!
+    city: String!
   }
 
   type RootQuery {
-    appointments: [Appointment!]!
+      login(email: String!, password: String!): AuthData!
+      appointments: [Appointment!]!
+      slots: [Slot!]!
+      patients: [Patient!]!
+      nurses: [Nurse!]!
+      doctors: [Doctor!]!
   }
 
   type RootMutation {
-    createAppointment(appointmentInput: AppointmentInput): Appointment
-    createPatient(patientInput: PatientInput): Patient
+      createUser(userInput: UserInput): User
+      createPatient(patientInput: PatientInput): Patient
+      createNurse(nurseInput: NurseInput): Nurse
+      createDoctor(doctorInput: DoctorInput): Doctor
+      cancelAppointment(appointmentId: ID!): Boolean!
   }
 
   schema {
-    query: RootQuery
-    mutation: RootMutation
+      query: RootQuery
+      mutation: RootMutation
   }
-  `);
+`);
