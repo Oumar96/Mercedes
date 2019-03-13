@@ -26,37 +26,37 @@ class App extends Component {
 
   render() {
     return (
-        <div>
-          <BrowserRouter>
-            <React.Fragment>
-              <AuthContext.Provider
-                  value={{
-                    token: this.state.token,
-                    userId: this.state.userId,
-                    login: this.login,
-                    logout: this.logout
-                  }}
-              >
-                <MainNavigation />
-                <main className="main-content">
-                  <Switch>
-                    {!this.state.token && <Redirect from="/" to="/book" exact />}
-                    {this.state.token && <Redirect from="/" to="/events" exact />}
-                    {this.state.token && (
-                        <Redirect from="/auth" to="/events" exact />
-                    )}
-                    {!this.state.token && (
-                        <Route path="/auth" component={AuthPage} />
-                    )}
-                    <Route path="/events" component={AppointmentsPage} />
-                    <Route path="/book" component={BookPage} />
-                    <Route path="/schedule" component={DoctorPage} />
-                  </Switch>
-                </main>
-              </AuthContext.Provider>
-            </React.Fragment>
-          </BrowserRouter>
-        </div>
+      <div>
+        <BrowserRouter>
+          <React.Fragment>
+            <AuthContext.Provider
+              value={{
+                token: this.state.token,
+                userId: this.state.userId,
+                login: this.login,
+                logout: this.logout
+              }}
+            >
+              <MainNavigation />
+              <main className="main-content">
+                <Switch>
+                  {!this.state.token && <Redirect from="/" to="/book" exact />}
+                  {this.state.token && <Redirect from="/" to="/events" exact />}
+                  {this.state.token && (
+                    <Redirect from="/auth" to="/events" exact />
+                  )}
+                  {!this.state.token && (
+                    <Route path="/auth" component={AuthPage} />
+                  )}
+                  <Route path="/events" component={AppointmentsPage} />
+                  <Route path="/book" component={BookPage} />
+                  <Route path="/schedule" component={DoctorPage} />
+                </Switch>
+              </main>
+            </AuthContext.Provider>
+          </React.Fragment>
+        </BrowserRouter>
+      </div>
     );
   }
 }

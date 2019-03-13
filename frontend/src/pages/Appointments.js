@@ -222,6 +222,8 @@ class AppointmentsPage extends Component {
         )}
         {
           <MuiThemeProvider>
+            <img class="image" src="https://www.columbialac.com/wp-content/uploads/2017/09/patient-forms.jpg" alt="clinic" />
+            <br />
             <div class="depth">
               <TextField
                 fullWidth={true}
