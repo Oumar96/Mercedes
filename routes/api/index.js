@@ -7,5 +7,6 @@ const slotController = require('../../graphql/resolvers/slot')
 router.get('/appointments', appointmentController.all);
 router.get('/retrieveSlots', slotController.all);
 router.post('/appointmentCreate', appointmentController.create);
+router.post('/scheduleCreate', appointmentController.doctorCreate);
 
 module.exports = router;
