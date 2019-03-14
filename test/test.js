@@ -3,7 +3,49 @@ const Nurse = require('../models/nurse');
 const Doctor = require('../models/doctor');
 const User = require('../models/user');
 const expect = require('chai').expect;
+const should = require('chai').should();
 const assert = require('assert');
+
+
+/*
+ * Create mock users for testing
+ */
+ 
+var testPatient = new Patient();
+testPatient = {
+    hcn: 'LOUX 0803 2317', 
+    birthday: 800726,
+    gender: 'M',
+    phoneNumber: '514-1110-6666',
+    physicalAddress: '123 Main St.',
+    emailAddress: 'patient@email.com'
+};
+
+var testNurse = new Nurse();
+testNurse = {
+    accessId: 'DOL96315',
+    password: 'abcd1234'
+};
+
+var testDoctor = new Doctor();
+testNurse = {
+    permitNumber: '2345679',
+    lastName: 'Smith',
+    firstName: 'John',
+    specialty: 'Family Medicine',
+    city: 'Montreal'
+};
+
+var testUser = new User();
+testUser = {
+    email: 'user@email.com',
+    password: 'abcd1234'
+};
+
+
+/*
+ * Tests to check that required attributes exist for Patient/Nurse/Doctor/User
+ */
 
 describe('TEST: Patient has valid healthcare number', function () {
     it('should be invalid if patient healthcare number is not given', function (done) {
@@ -124,3 +166,19 @@ describe('TEST: User has valid password', function () {
         });
     });
 });
+
+
+/*
+ * Tests to check that the attributes for the test users were input in to the database correctly
+ */
+
+describe('TEST: Patient Healthcare number should equal mock Patient Healthcare number', function () {
+    it('should be invalid if Healthcare number was not successfully entered in to database', function (done) {
+        testPatient.should.have.property('hcn').equal('LOUX 0803 2317');
+        done();
+    });
+});
+
+
+
+        
