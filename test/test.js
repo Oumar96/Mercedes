@@ -179,8 +179,8 @@ describe('TEST: Patient Healthcare number should equal mock Patient Healthcare n
     });
 });
 
-describe('TEST: Patient Healthcare number should equal mock Patient Healthcare number', function () {
-    it('should be invalid if Healthcare number was not successfully entered in to database', function (done) {
+describe('TEST: Patient Healthcare number should equal mock Patient birthday', function () {
+    it('should be invalid if birthday was not successfully entered in to database', function (done) {
         testPatient.should.have.property('birthday').equal(800726);
         done();
     });
