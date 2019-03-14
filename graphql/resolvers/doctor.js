@@ -2,7 +2,7 @@ const Doctor = require('../../models/doctor');
 const Appointment = require('../../models/appointment');
 
 const doctorController = {
-  nurses: async () => {
+  doctors: async () => {
     try {
       const doctors = await Doctor.find();
       return doctors.map(doctor => {
