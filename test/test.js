@@ -28,7 +28,7 @@ testNurse = {
 };
 
 var testDoctor = new Doctor();
-testNurse = {
+testDoctor = {
     permitNumber: '2345679',
     lastName: 'Smith',
     firstName: 'John',
@@ -172,19 +172,107 @@ describe('TEST: User has valid password', function () {
  * Tests to check that the attributes for the test users were input in to the database correctly
  */
 
-describe('TEST: Patient Healthcare number should equal mock Patient Healthcare number', function () {
+describe('TEST: Patient Healthcare number = test value', function () {
     it('should be invalid if Healthcare number was not successfully entered in to database', function (done) {
         testPatient.should.have.property('hcn').equal('LOUX 0803 2317');
         done();
     });
 });
 
-describe('TEST: Patient Healthcare number should equal mock Patient birthday', function () {
+describe('TEST: Patient birthday = test value', function () {
     it('should be invalid if birthday was not successfully entered in to database', function (done) {
         testPatient.should.have.property('birthday').equal(800726);
         done();
     });
 });
 
+describe('TEST: Patient gender = test value', function () {
+    it('should be invalid if gender was not successfully entered in to database', function (done) {
+        testPatient.should.have.property('gender').equal('M');
+        done();
+    });
+});
 
-        
+describe('TEST: Patient phoneNumber = test value', function () {
+    it('should be invalid if phoneNumber was not successfully entered in to database', function (done) {
+        testPatient.should.have.property('phoneNumber').equal('514-1110-6666');
+        done();
+    });
+});
+
+describe('TEST: Patient physicalAddress = test value', function () {
+    it('should be invalid if physicalAddress was not successfully entered in to database', function (done) {
+        testPatient.should.have.property('physicalAddress').equal('123 Main St.');
+        done();
+    });
+});
+
+describe('TEST: Patient emailAddress = test value', function () {
+    it('should be invalid if emailAddress was not successfully entered in to database', function (done) {
+        testPatient.should.have.property('emailAddress').equal('patient@email.com');
+        done();
+    });
+});
+
+describe('TEST: Nurse accessId = test value', function () {
+    it('should be invalid if accessId was not successfully entered in to database', function (done) {
+        testNurse.should.have.property('accessId').equal('DOL96315');
+        done();
+    });
+});
+
+describe('TEST: Nurse password = test value', function () {
+    it('should be invalid if password was not successfully entered in to database', function (done) {
+        testNurse.should.have.property('password').equal('abcd1234');
+        done();
+    });
+});
+
+describe('TEST: Doctor permitNumber = test value', function () {
+    it('should be invalid if permitNumber was not successfully entered in to database', function (done) {
+        testDoctor.should.have.property('permitNumber').equal('2345679');
+        done();
+    });
+});
+
+describe('TEST: Doctor lastName = test value', function () {
+    it('should be invalid if lastName was not successfully entered in to database', function (done) {
+        testDoctor.should.have.property('lastName').equal('Smith');
+        done();
+    });
+});
+
+describe('TEST: Doctor firstName = test value', function () {
+    it('should be invalid if firstName was not successfully entered in to database', function (done) {
+        testDoctor.should.have.property('firstName').equal('John');
+        done();
+    });
+});
+
+describe('TEST: Doctor specialty = test value', function () {
+    it('should be invalid if specialty was not successfully entered in to database', function (done) {
+        testDoctor.should.have.property('specialty').equal('Family Medicine');
+        done();
+    });
+});
+
+describe('TEST: Doctor city = test value', function () {
+    it('should be invalid if city was not successfully entered in to database', function (done) {
+        testDoctor.should.have.property('city').equal('Montreal');
+        done();
+    });
+});
+
+describe('TEST: User email = test value', function () {
+    it('should be invalid if email was not successfully entered in to database', function (done) {
+        testUser.should.have.property('email').equal('user@email.com');
+        done();
+    });
+});
+
+describe('TEST: User password = test value', function () {
+    it('should be invalid if password was not successfully entered in to database', function (done) {
+        testUser.should.have.property('password').equal('abcd1234');
+        done();
+    });
+});
