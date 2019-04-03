@@ -94,15 +94,42 @@ class AuthPage extends Component {
   render() {
     return (
       <React.Fragment>
-        <img class="image" src="http://www.metacare.ca/livesite/uploads/2014/08/nurse-image-lg.jpg" alt="clinic" />
+        <img
+          class="image"
+          src="http://www.metacare.ca/livesite/uploads/2014/08/nurse-image-lg.jpg"
+          alt="clinic"
+        />
         <form className="auth-form" onSubmit={this.submitHandler}>
-          <div className="form-control">
-            <label htmlFor="email">Access ID</label>
-            <input pattern="[a-zA-Z]{3}\d{5}" type="text" id="email" ref={this.emailEl} />
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">
+                ☞
+              </span>
+            </div>
+            <input
+              type="text"
+              pattern="[a-zA-Z]{3}\d{5}"
+              class="form-control"
+              ref={this.emailEl}
+              placeholder="Access ID"
+              aria-label="Access ID"
+              aria-describedby="basic-addon1"
+            />
           </div>
-          <div className="form-control">
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" ref={this.passwordEl} />
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">
+                ☞
+              </span>
+            </div>
+            <input
+              type="password"
+              class="form-control"
+              ref={this.passwordEl}
+              placeholder="Password"
+              aria-label="Password"
+              aria-describedby="basic-addon1"
+            />
           </div>
           <div className="form-actions">
             <button type="submit">Login</button>
