@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import AuthPage from './pages/Auth';
 import AppointmentsPage from './pages/Appointments';
 import MainNavigation from './components/Navigation/MainNavigation';
+import MainFooter from './components/Footer/MainFooter';
 import AuthContext from './context/auth-context';
 import BookPage from './pages/Book';
 import DoctorPage from './pages/Doctor';
@@ -53,6 +54,7 @@ class App extends Component {
                   <Route path="/schedule" component={DoctorPage} />
                 </Switch>
               </main>
+              <MainFooter />
             </AuthContext.Provider>
           </React.Fragment>
         </BrowserRouter>

@@ -5,8 +5,8 @@ import AppointmentList from '../components/Appointments/AppointmentList/Appointm
 import Spinner from '../components/Spinner/Spinner';
 import AuthContext from '../context/auth-context';
 import './Appointments.css';
-import TextField from "material-ui/TextField";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import TextField from 'material-ui/TextField';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class AppointmentsPage extends Component {
   state = {
@@ -14,7 +14,7 @@ class AppointmentsPage extends Component {
     appointments: [],
     isLoading: false,
     selectedAppointment: null,
-    healthCareNumber: ""
+    healthCareNumber: ''
   };
   isActive = true;
 
@@ -24,7 +24,7 @@ class AppointmentsPage extends Component {
     if (this.context.token) {
       this.fetchAppointmentsNurse();
     } else {
-    this.fetchAppointments();
+      this.fetchAppointments();
     }
   }
 
@@ -162,9 +162,11 @@ class AppointmentsPage extends Component {
       })
       .then(resData => {
         this.setState(prevState => {
-          const updatedAppointments = prevState.appointments.filter(appointment => {
-            return appointment._id !== appointmentId;
-          });
+          const updatedAppointments = prevState.appointments.filter(
+            appointment => {
+              return appointment._id !== appointmentId;
+            }
+          );
           return { appointments: updatedAppointments, isLoading: false };
         });
       })
@@ -176,7 +178,9 @@ class AppointmentsPage extends Component {
 
   showDetailHandler = appointmentId => {
     this.setState(prevState => {
-      const selectedAppointment = prevState.appointments.find(a => a._id === appointmentId);
+      const selectedAppointment = prevState.appointments.find(
+        a => a._id === appointmentId
+      );
       return { selectedAppointment: selectedAppointment };
     });
   };
@@ -186,16 +190,28 @@ class AppointmentsPage extends Component {
   }
 
   returnTime() {
-    if (this.state.selectedAppointment.type === "Non-Urgent") {
-      var quotient = Math.floor(this.state.selectedAppointment.slots.slot_time / 3);
-      var remainder = (this.state.selectedAppointment.slots.slot_time * 20) % 60;
+    if (this.state.selectedAppointment.type === 'Non-Urgent') {
+      var quotient = Math.floor(
+        this.state.selectedAppointment.slots.slot_time / 3
+      );
+      var remainder =
+        (this.state.selectedAppointment.slots.slot_time * 20) % 60;
       if (remainder === 0) {
-        return (<p>The appointment is at {8 + quotient}:00</p>);
+        return <p>The appointment is at {8 + quotient}:00</p>;
       } else {
-        return (<p>The appointment is at {8 + quotient}:{remainder}</p>);
+        return (
+          <p>
+            The appointment is at {8 + quotient}:{remainder}
+          </p>
+        );
       }
-    } else if (this.state.selectedAppointment.type === "Annual") {
-      return (<p>The appointment is at {parseFloat(this.state.selectedAppointment.slots.slot_time) + 8}:00</p>);
+    } else if (this.state.selectedAppointment.type === 'Annual') {
+      return (
+        <p>
+          The appointment is at{' '}
+          {parseFloat(this.state.selectedAppointment.slots.slot_time) + 8}:00
+        </p>
+      );
     }
   }
 
@@ -215,20 +231,32 @@ class AppointmentsPage extends Component {
             onConfirm={this.modalCancelHandler}
             confirmText={this.context.token ? 'Book' : 'Confirm'}
           >
-            <h1>This is an {this.state.selectedAppointment.type} appointment</h1>
-            <p>The date of the appointment is {this.state.selectedAppointment.slots.slot_date}</p>
+            <h1>
+              This is an {this.state.selectedAppointment.type} appointment
+            </h1>
+            <p>
+              The date of the appointment is{' '}
+              {this.state.selectedAppointment.slots.slot_date}
+            </p>
             {this.returnTime()}
           </Modal>
         )}
         {
           <MuiThemeProvider>
-            <img class="image" src="https://www.columbialac.com/wp-content/uploads/2017/09/patient-forms.jpg" alt="clinic" />
+            <img
+              class="image"
+              src="https://www.columbialac.com/wp-content/uploads/2017/09/patient-forms.jpg"
+              alt="clinic"
+            />
             <br />
             <div class="depth">
               <TextField
                 fullWidth={true}
-                hintText="Enter Health Care Number"
-                onChange={(evt, newValue) => {this.handleSetHCN(newValue.replace(/\s/g, '')); this.fetchAppointments();}}
+                hintText="Enter Health Care #"
+                onChange={(evt, newValue) => {
+                  this.handleSetHCN(newValue.replace(/\s/g, ''));
+                  this.fetchAppointments();
+                }}
               />
             </div>
           </MuiThemeProvider>
@@ -243,6 +271,7 @@ class AppointmentsPage extends Component {
             onCancel={this.deleteAppointmentHandler}
           />
         )}
+        <div class="section" />
       </React.Fragment>
     );
   }
