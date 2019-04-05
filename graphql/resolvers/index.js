@@ -4,6 +4,7 @@ const patientResolver = require('./patient');
 const nurseResolver = require('./nurse');
 const doctorResolver = require('./doctor');
 const slotResolver = require('./slot2');
+const clinicResolver = require('./clinic');
 
 const rootResolver = {
   ...authResolver,
@@ -11,7 +12,8 @@ const rootResolver = {
   ...patientResolver,
   ...nurseResolver,
   ...doctorResolver,
-  ...slotResolver
+  ...slotResolver,
+  ...clinicResolver
 };
 
 module.exports = rootResolver;
