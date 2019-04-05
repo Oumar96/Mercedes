@@ -101,11 +101,6 @@ class AuthPage extends Component {
         />
         <form className="auth-form" onSubmit={this.submitHandler}>
           <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">
-                ☞
-              </span>
-            </div>
             <input
               type="text"
               pattern="[a-zA-Z]{3}\d{5}"
@@ -117,11 +112,6 @@ class AuthPage extends Component {
             />
           </div>
           <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">
-                ☞
-              </span>
-            </div>
             <input
               type="password"
               class="form-control"
@@ -135,6 +125,10 @@ class AuthPage extends Component {
             <button type="submit">Login</button>
           </div>
         </form>
+        <br />
+        <br />
+        <br />
+        <br />
       </React.Fragment>
     );
   }
