@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
 import AuthPage from './pages/Auth';
+import AdminPage from './pages/Administrator';
 import AppointmentsPage from './pages/Appointments';
 import MainNavigation from './components/Navigation/MainNavigation';
 import MainFooter from './components/Footer/MainFooter';
 import AuthContext from './context/auth-context';
 import BookPage from './pages/Book';
 import DoctorPage from './pages/Doctor';
+import AdminPanel from './pages/AdminPanel';
 
 import './App.css';
 
@@ -46,12 +48,20 @@ class App extends Component {
                   {this.state.token && (
                     <Redirect from="/auth" to="/events" exact />
                   )}
+                  {this.state.token && (
+                    <Redirect from="/admin" to="/panel" exact />
+                  )}
                   {!this.state.token && (
                     <Route path="/auth" component={AuthPage} />
+                  )}
+                  {!this.state.token && <Redirect from="/panel" to="/admin" />}
+                  {!this.state.token && (
+                    <Route path="/admin" component={AdminPage} />
                   )}
                   <Route path="/events" component={AppointmentsPage} />
                   <Route path="/book" component={BookPage} />
                   <Route path="/schedule" component={DoctorPage} />
+                  <Route path="/panel" component={AdminPanel} />
                 </Switch>
               </main>
               <MainFooter />
