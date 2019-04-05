@@ -1,0 +1,15 @@
+.auth-form {
+  width: 25rem;
+  max-width: 80%;
+  margin: 5rem auto;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
