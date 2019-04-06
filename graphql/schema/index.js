@@ -48,6 +48,17 @@ module.exports = buildSchema(`
     _id: ID!
     email: String!
     password: String
+    type: String!
+  }
+
+  type Clinic {
+    _id: ID!
+    name: String!
+    location: String!
+    rooms: Int!
+    physicians: [Doctor!]
+    nurses: [Nurse!]
+    patients: [Patient!]
   }
 
   type AuthData {
@@ -59,6 +70,7 @@ module.exports = buildSchema(`
   input UserInput {
     email: String!
     password: String!
+    type: String!
   }
 
   input PatientInput {
@@ -90,6 +102,7 @@ module.exports = buildSchema(`
       patients: [Patient!]!
       nurses: [Nurse!]!
       doctors: [Doctor!]!
+      clinics: [Clinic!]!
   }
 
   type RootMutation {
@@ -97,7 +110,9 @@ module.exports = buildSchema(`
       createPatient(patientInput: PatientInput): Patient
       createNurse(nurseInput: NurseInput): Nurse
       createDoctor(doctorInput: DoctorInput): Doctor
+      createClinic(name: String!, location: String!, rooms: Int!): Clinic
       cancelAppointment(appointmentId: ID!): Boolean!
+      pushPerson(name: String!, type: String!, permitNumber: Int, accessId: String, hcn: String): Boolean!
   }
 
   schema {

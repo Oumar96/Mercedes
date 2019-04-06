@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './Auth.css';
+import './Administrator.css';
 import AuthContext from '../context/auth-context';
 
 class AuthPage extends Component {
@@ -96,7 +96,7 @@ class AuthPage extends Component {
       <React.Fragment>
         <img
           class="image"
-          src="http://www.metacare.ca/livesite/uploads/2014/08/nurse-image-lg.jpg"
+          src="https://cdn.roschier.com/cdn/farfuture/pcgwdi0bDa-FRQVEnPjfeqhmWNGenZSCKUThq4Ww1Ko/mtime:1536426781/sites/default/files/styles/hero_without_side_bar/public/hero_ict_0.jpg?itok=vO8TigBZ"
           alt="clinic"
         />
         <form className="auth-form" onSubmit={this.submitHandler}>
@@ -106,7 +106,7 @@ class AuthPage extends Component {
               pattern="[a-zA-Z]{3}\d{5}"
               class="form-control"
               ref={this.emailEl}
-              placeholder="Access ID"
+              placeholder="Administrator ID"
               aria-label="Access ID"
               aria-describedby="basic-addon1"
             />
@@ -129,6 +129,7 @@ class AuthPage extends Component {
         <br />
         <br />
         <br />
+        {this.context.token && <p> Hello ! </p>}
       </React.Fragment>
     );
   }

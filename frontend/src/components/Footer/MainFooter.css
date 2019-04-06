@@ -4,6 +4,7 @@
   font-size: 15px;
   line-height: 24px;
   color: #ffffff;
+  text-align: center;
 }
 .site-footer hr {
   border-top-color: #bbb;
@@ -44,9 +45,6 @@
 }
 .footer-links.inline li {
   display: inline-block;
-}
-.site-footer .social-icons {
-  text-align: right;
 }
 .site-footer .social-icons a {
   width: 40px;
@@ -95,11 +93,8 @@
   color: #1ca0be;
   font-size: 16px;
   display: inline-block;
-  line-height: 44px;
-  width: 44px;
   height: 44px;
   text-align: center;
-  margin-right: 8px;
   border-radius: 100%;
   -webkit-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;

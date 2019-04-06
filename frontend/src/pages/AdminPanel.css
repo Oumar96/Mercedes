@@ -1,0 +1,26 @@
+.image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+h1 {
+  text-align: center;
+}
+
+.depth2 {
+  margin: auto;
+  padding: 10px;
+}
+
+.section {
+  height: 250px;
+}
+
+.grid {
+  border: 1px solid black;
+  width: 300px;
+  padding: 25px;
+  margin: 0 auto;
+}

@@ -11,12 +11,10 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  createdEvents: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Event'
-    }
-  ]
+  type: {
+    type: String,
+    required: true
+  }
 });
 
 module.exports = mongoose.model('User', userSchema);

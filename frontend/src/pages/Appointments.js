@@ -243,35 +243,37 @@ class AppointmentsPage extends Component {
         )}
         {
           <MuiThemeProvider>
-            <img
-              class="image"
-              src="https://www.columbialac.com/wp-content/uploads/2017/09/patient-forms.jpg"
-              alt="clinic"
-            />
-            <br />
-            <div class="depth">
-              <TextField
-                fullWidth={true}
-                hintText="Enter Health Care #"
-                onChange={(evt, newValue) => {
-                  this.handleSetHCN(newValue.replace(/\s/g, ''));
-                  this.fetchAppointments();
-                }}
+            <div>
+              <img
+                className="image"
+                src="https://www.columbialac.com/wp-content/uploads/2017/09/patient-forms.jpg"
+                alt="clinic"
               />
+              <br />
+              <div className="depth">
+                <TextField
+                  fullWidth={true}
+                  hintText="Enter Health Care #"
+                  onChange={(evt, newValue) => {
+                    this.handleSetHCN(newValue.replace(/\s/g, ''));
+                    this.fetchAppointments();
+                  }}
+                />
+              </div>
+              {this.state.isLoading ? (
+                <Spinner />
+              ) : (
+                <AppointmentList
+                  appointments={this.state.appointments}
+                  authUserId={this.context.userId}
+                  onViewDetail={this.showDetailHandler}
+                  onCancel={this.deleteAppointmentHandler}
+                />
+              )}
+              <div className="section" />
             </div>
           </MuiThemeProvider>
         }
-        {this.state.isLoading ? (
-          <Spinner />
-        ) : (
-          <AppointmentList
-            appointments={this.state.appointments}
-            authUserId={this.context.userId}
-            onViewDetail={this.showDetailHandler}
-            onCancel={this.deleteAppointmentHandler}
-          />
-        )}
-        <div class="section" />
       </React.Fragment>
     );
   }
