@@ -23,7 +23,7 @@
     "chai": "^4.2.0",
     "dataloader": "^1.4.0",
     "ejs": "^2.6.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-graphql": "^0.7.1",
     "graphql": "^14.0.2",
     "jsonwebtoken": "^8.4.0",
